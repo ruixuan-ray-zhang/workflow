@@ -1,0 +1,63 @@
+schema_version: 1
+
+organization:
+  workflow_name: "<INTERNAL_WORKFLOW_NAME>"
+  internal_version: "<INTERNAL_VERSION>"
+  owner_role: "<WORKFLOW_OWNER_ROLE>"
+  security_reviewer_role: "<SECURITY_REVIEWER_ROLE>"
+
+repositories:
+  internal_workflow_repository:
+    provider: "<PROVIDER>"
+    reference: "<INTERNAL_REFERENCE>"
+  project_repository_default:
+    provider: "<PROVIDER>"
+    stable_branch: "<BRANCH>"
+    integration_branch: "<BRANCH>"
+
+tracking:
+  delivery_provider: "<repository_issue | work_item | other | none>"
+  execution_provider: "<same_as_delivery | separate_tracker | repository_only>"
+  modes_allowed:
+    - repository_only
+    - parent_only
+    - parent_and_gates
+  parent_auto_close: false
+  agent_may_close_parent: false
+
+execution_environments:
+  developer:
+    role: local_development
+    identifier: "<LOGICAL_ROLE_ONLY>"
+  build:
+    role: build_executor
+    identifier: "<LOGICAL_ROLE_ONLY>"
+  test:
+    role: test_executor
+    identifier: "<LOGICAL_ROLE_ONLY>"
+
+artifact_policy:
+  store_role: "<INTERNAL_ARTIFACT_STORE_ROLE>"
+  require_source_revision: true
+  require_manifest: true
+  require_immutable_artifact_identity: true
+  persistent_outputs_outside_source_repository: true
+
+human_authority:
+  expensive_run_approval_role: "<ROLE>"
+  merge_approval_role: "<ROLE>"
+  validation_owner_role: "<ROLE>"
+  release_owner_role: "<ROLE>"
+
+security:
+  data_may_leave_enterprise_boundary: false
+  source_code_may_leave_enterprise_boundary: false
+  logs_may_leave_enterprise_boundary: false
+  credentials_may_be_committed: false
+  private_paths_may_be_committed: false
+  public_runtime_dependency_allowed: false
+  automatic_public_sync_allowed: false
+  reverse_sync_allowed: false
+
+local_customizations:
+  - "<REPLACE_WITH_INTERNAL_RULE_OR_REMOVE>"

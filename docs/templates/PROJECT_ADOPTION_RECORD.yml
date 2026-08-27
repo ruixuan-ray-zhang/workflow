@@ -1,0 +1,53 @@
+schema_version: 1
+
+project:
+  name: "<PROJECT_NAME>"
+  repository: "<PROJECT_REPOSITORY_REFERENCE>"
+  purpose: "<PROJECT_PURPOSE>"
+  default_branch: "<DEFAULT_BRANCH>"
+  integration_branch: "<INTEGRATION_BRANCH>"
+
+workflow_origin:
+  internal_repository: "<INTERNAL_WORKFLOW_REPOSITORY>"
+  internal_version: "<INTERNAL_WORKFLOW_VERSION>"
+  internal_commit: "<FULL_INTERNAL_COMMIT_SHA>"
+  adopted_at: "<UTC_TIMESTAMP>"
+
+authority:
+  project_task_specification: project_local_task_md
+  project_local_rules_preserved: true
+  internal_template_automatic_overwrite: false
+
+execution:
+  developer_environment_role: "<ROLE>"
+  build_environment_role: "<ROLE>"
+  test_environment_role: "<ROLE>"
+  persistent_artifact_store_role: "<ROLE>"
+
+tracking:
+  mode: "<repository_only | parent_only | parent_and_gates>"
+  provider: "<PROVIDER_OR_NONE>"
+
+human_validation:
+  owner_role: "<ROLE>"
+  require_before_dependent_task: true
+
+reconciliation:
+  adopted: []
+  adapted: []
+  deferred: []
+  rejected: []
+
+local_deviations: []
+
+pilot:
+  task_key: "<PILOT_TASK_KEY>"
+  status: "<planned | in_progress | passed | failed | blocked | waived>"
+  evidence_reference: "<REFERENCE>"
+
+validation:
+  unresolved_required_placeholders: false
+  existing_rules_audited: false
+  provider_capabilities_verified: false
+  persistent_artifact_policy_verified: false
+  human_acceptance_policy_verified: false

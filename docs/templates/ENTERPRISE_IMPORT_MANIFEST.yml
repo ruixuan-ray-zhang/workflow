@@ -1,0 +1,39 @@
+schema_version: 1
+
+public_origin:
+  repository: "<PUBLIC_REPOSITORY>"
+  version: "<PUBLIC_VERSION>"
+  commit: "<FULL_PUBLIC_COMMIT_SHA>"
+  exported_at: "<UTC_TIMESTAMP>"
+  archive_sha256: "<OPTIONAL_ARCHIVE_SHA256>"
+
+enterprise_handoff:
+  mode: one_way_detached
+  import_method: "<preserve_history | clean_snapshot>"
+  imported_at: "<UTC_TIMESTAMP>"
+  imported_by: "<INTERNAL_ROLE_OR_ID>"
+  internal_repository: "<INTERNAL_REPOSITORY_REFERENCE>"
+
+authority:
+  public_repository_authoritative_after_import: false
+  internal_repository_authoritative: true
+  automatic_upstream_sync: false
+  reverse_sync_allowed: false
+
+internal_baseline:
+  version: "<INTERNAL_BASELINE_VERSION>"
+  commit: "<INTERNAL_BASELINE_COMMIT>"
+  workflow_owner: "<INTERNAL_OWNER_ROLE>"
+
+validation:
+  source_identity_verified: false
+  file_inventory_verified: false
+  internal_customization_separated_from_public_staging: false
+  public_push_disabled_or_removed: false
+  runtime_public_dependency_absent: false
+  prohibited_content_scan_passed: false
+  human_handoff_validation: "<pending | passed | failed | blocked>"
+
+notes:
+  deferred_customizations: []
+  known_limitations: []
