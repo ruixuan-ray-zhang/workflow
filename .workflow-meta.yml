@@ -1,0 +1,91 @@
+schema_version: 1
+
+meta_workflow:
+  name: portable-workflow-meta
+  version: "0.1.0"
+  repository_role: public_enterprise_seed
+
+origin:
+  repository: ruixuan-ray-zhang/research-agent-workflow-template
+  workflow_version: "0.3.0"
+  source_commit: "56319a04cd1c94e7a8732e111914271fac36b9be"
+  derivation: distilled_not_copied_verbatim
+
+authority:
+  before_handoff:
+    public_repository_authoritative: true
+  after_handoff:
+    internal_repository_authoritative: true
+    public_repository_authoritative_for_internal_policy: false
+    automatic_upstream_sync: false
+    reverse_sync_allowed: false
+
+handoff:
+  mode: one_way_detached
+  supported_import_methods:
+    - preserve_history
+    - clean_snapshot
+  require_frozen_source_version: true
+  require_import_manifest: true
+  require_internal_validation: true
+
+task_contract:
+  specification_source: versioned_task_md
+  trackers_are_execution_projections: true
+  persistent_artifacts_are_execution_evidence: true
+  require_explicit_execution_authorization: true
+
+state_model:
+  implementation_status:
+    - planned
+    - in_progress
+    - merged
+  execution_status:
+    - not_run
+    - dry_run
+    - live_success
+    - blocked
+  artifact_status:
+    - unavailable
+    - temporary
+    - persistent
+  live_result_available:
+    - false
+    - true
+  human_validation_status:
+    - not_required
+    - pending
+    - passed
+    - failed
+    - blocked
+    - waived
+
+gate_model:
+  types:
+    - machine
+    - approval
+    - human
+  require_explicit_dependencies: true
+  require_observable_exit_checks: true
+  require_machine_evidence: true
+  agent_may_complete_approval_gate: false
+  agent_may_complete_human_gate: false
+  agent_may_close_parent: false
+  default_max_concurrent_machine_gates: 1
+
+security:
+  allow_internal_configuration_in_public_repository: false
+  allow_credentials: false
+  allow_private_paths: false
+  allow_proprietary_data_or_logs: false
+  allow_automatic_reverse_sync: false
+
+upgrade_policy:
+  classify_changes:
+    - adopt
+    - adapt
+    - defer
+    - reject
+  automatic_overwrite: false
+  require_scoped_task: true
+  require_human_review_for_contract_changes: true

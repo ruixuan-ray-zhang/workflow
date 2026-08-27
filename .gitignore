@@ -1,0 +1,31 @@
+# Local environments
+.env
+.env.*
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+
+# Credentials and certificates
+*.pem
+*.key
+*.p12
+*.pfx
+*.crt
+*.token
+
+# Enterprise staging and generated internal copies
+enterprise-staging/
+internalized/
+exports/
+dist/
+
+# Editor and operating-system files
+.DS_Store
+.vscode/
+.idea/
+
+# Logs and local artifacts
+*.log
+artifacts/
+tmp/
